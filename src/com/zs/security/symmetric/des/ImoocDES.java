@@ -1,4 +1,4 @@
-package com.zs.security.symmetric_encryption.des;
+package com.zs.security.symmetric.des;
 
 
 import java.security.InvalidKeyException;
@@ -23,7 +23,6 @@ import org.apache.commons.codec.binary.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class ImoocDES {
-
 	/**
 	 * DESº”√‹À„∑®
 	 */

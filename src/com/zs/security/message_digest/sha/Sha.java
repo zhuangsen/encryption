@@ -1,4 +1,4 @@
-package com.zs.security.sha;
+package com.zs.security.message_digest.sha;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

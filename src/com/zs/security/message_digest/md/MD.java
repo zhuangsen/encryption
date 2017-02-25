@@ -1,4 +1,4 @@
-package com.zs.security.md;
+package com.zs.security.message_digest.md;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

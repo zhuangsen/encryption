@@ -1,4 +1,4 @@
-package com.zs.security.hmac;
+package com.zs.security.message_digest.hmac;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;

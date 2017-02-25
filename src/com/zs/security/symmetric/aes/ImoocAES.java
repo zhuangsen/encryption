@@ -1,4 +1,4 @@
-package com.zs.security.symmetric_encryption.aes;
+package com.zs.security.symmetric.aes;
 
 import java.security.InvalidKeyException;
 import java.security.Key;

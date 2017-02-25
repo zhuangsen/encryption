@@ -1,4 +1,4 @@
-package com.zs.security.symmetric_encryption.pbe;
+package com.zs.security.symmetric.pbe;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
