@@ -39,12 +39,12 @@
 ## 消息摘要算法 散列函数
 	验证数据的完整性，特点：长度不受限制，哈希值容易计算，散列运算过程不可逆
 	算法:
-		MD(消息摘要算法，128位摘要信息)：MD2(JDK)、MD4(Bouncy Castle)、MD5(JDK)
-		SHA(安全散列算法，固定长度信息，可以被伪造)：SHA-1(摘要长度：160)、SHA-2(SHA-224、SHA-256、SHA-384、SHA-512)
-		MAC(消息认证算法，兼容了MD和SHA两种特性，并加入了密钥)：
-			--MD系列：HmacMD2、HmacMD4、HmacMD5
-			--SHA系列：HmacSHA1、HmacSHA224、HmacSHA256、HmacSHA384、HmacSHA512
-		其他：RipeMD、Tiger、Whirlpool、GOST3411(都是Bouncy Castle实现)
+	MD(消息摘要算法，128位摘要信息)：MD2(JDK)、MD4(Bouncy Castle)、MD5(JDK)
+	SHA(安全散列算法，固定长度信息，可以被伪造)：SHA-1(摘要长度：160)、SHA-2(SHA-224、SHA-256、SHA-384、SHA-512)
+	MAC(消息认证算法，兼容了MD和SHA两种特性，并加入了密钥)：
+		--MD系列：HmacMD2、HmacMD4、HmacMD5
+		--SHA系列：HmacSHA1、HmacSHA224、HmacSHA256、HmacSHA384、HmacSHA512
+	其他：RipeMD、Tiger、Whirlpool、GOST3411(都是Bouncy Castle实现)
 		
 ## 数字签名
 	私钥签名、公钥验证
@@ -80,6 +80,7 @@ java.net.ssl-安全套接字
 Bouncy Castle-两种支持方案:1)调用；2)配置
 
 Commons Codec
+
 	Apache
 	
 	Base64、二进制、十六进制、字符集编码
