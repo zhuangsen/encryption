@@ -1,4 +1,4 @@
-package com.zs.security.asymmetric.rsa;
+package com.zs.security.asymmetric;
 
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -14,17 +14,22 @@ import javax.crypto.Cipher;
 
 import org.apache.commons.codec.binary.Base64;
 
+/**
+ * 非对称加密算法:RSA(基于因子分解:数据加密&数字签名)
+ * 
+ * @author madison
+ *
+ */
 public class RSA {
-	
+
 	private static String src = "zhuangsen";
 
 	public static void main(String[] args) {
 		jdkRSA();
 	}
-	
-	public static void jdkRSA(){
-		try 
-		{
+
+	public static void jdkRSA() {
+		try {
 			// 1.初始化发送方密钥
 			KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
 			keyPairGenerator.initialize(512);
@@ -33,7 +38,7 @@ public class RSA {
 			RSAPrivateKey rsaPrivateKey = (RSAPrivateKey) keyPair.getPrivate();
 			System.out.println("Public Key:" + Base64.encodeBase64String(rsaPublicKey.getEncoded()));
 			System.out.println("Private Key:" + Base64.encodeBase64String(rsaPrivateKey.getEncoded()));
-			
+
 			// 2.私钥加密、公钥解密 ---- 加密
 			PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(rsaPrivateKey.getEncoded());
 			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
@@ -42,7 +47,7 @@ public class RSA {
 			cipher.init(Cipher.ENCRYPT_MODE, privateKey);
 			byte[] result = cipher.doFinal(src.getBytes());
 			System.out.println("私钥加密、公钥解密 ---- 加密:" + Base64.encodeBase64String(result));
-			
+
 			// 3.私钥加密、公钥解密 ---- 解密
 			X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(rsaPublicKey.getEncoded());
 			keyFactory = KeyFactory.getInstance("RSA");
@@ -51,9 +56,7 @@ public class RSA {
 			cipher.init(Cipher.DECRYPT_MODE, publicKey);
 			result = cipher.doFinal(result);
 			System.out.println("私钥加密、公钥解密 ---- 解密:" + new String(result));
-			
-			
-			
+
 			// 4.公钥加密、私钥解密 ---- 加密
 			X509EncodedKeySpec x509EncodedKeySpec2 = new X509EncodedKeySpec(rsaPublicKey.getEncoded());
 			KeyFactory keyFactory2 = KeyFactory.getInstance("RSA");
@@ -62,7 +65,7 @@ public class RSA {
 			cipher2.init(Cipher.ENCRYPT_MODE, publicKey2);
 			byte[] result2 = cipher2.doFinal(src.getBytes());
 			System.out.println("公钥加密、私钥解密 ---- 加密:" + Base64.encodeBase64String(result2));
-			
+
 			// 5.私钥解密、公钥加密 ---- 解密
 			PKCS8EncodedKeySpec pkcs8EncodedKeySpec5 = new PKCS8EncodedKeySpec(rsaPrivateKey.getEncoded());
 			KeyFactory keyFactory5 = KeyFactory.getInstance("RSA");
@@ -71,9 +74,9 @@ public class RSA {
 			cipher5.init(Cipher.DECRYPT_MODE, privateKey5);
 			byte[] result5 = cipher5.doFinal(result2);
 			System.out.println("公钥加密、私钥解密 ---- 解密:" + new String(result5));
-			
+
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 	}
