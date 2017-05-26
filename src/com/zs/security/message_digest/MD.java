@@ -19,14 +19,14 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
  */
 public class MD {
 
-	private static String src = "imooc security base64";
+	private static String src = "kyo";
 
 	public static void main(String[] args) {
 		jdkMD5();
-		jdkMD2();
-		bcMD4();
-		bcMD5();
-		ccMD();
+//		jdkMD2();
+//		bcMD4();
+//		bcMD5();
+//		ccMD();
 	}
 
 	public static void jdkMD5() {
