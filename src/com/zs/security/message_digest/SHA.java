@@ -9,6 +9,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.digests.SHA224Digest;
+import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**
@@ -22,10 +23,11 @@ public class SHA {
 	private static String src = "imooc security sha";
 
 	public static void main(String[] args) {
-		jdkSHA1();
-		SHA224();
-		bcSHA1();
-		ccSHA1();
+//		jdkSHA1();
+//		SHA224();
+		SHA256();
+//		bcSHA1();
+//		ccSHA1();
 	}
 
 	public static void jdkSHA1() {
@@ -63,6 +65,25 @@ public class SHA {
 		byte[] sha224Bytes = new byte[digest.getDigestSize()];
 		digest.doFinal(sha224Bytes, 0);
 		System.out.println("BC SHA224:" + org.bouncycastle.util.encoders.Hex.toHexString(sha224Bytes));
+	}
+	
+	public static void SHA256() {
+		// JDK 实现
+		try {
+			Security.addProvider(new BouncyCastleProvider());
+			MessageDigest md = MessageDigest.getInstance("SHA256");
+			byte[] sha256Bytes = md.digest(src.getBytes());
+			System.out.println("JDK SHA256:" + Hex.encodeHexString(sha256Bytes));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+
+		// Bouncy Castle实现
+		Digest digest = new SHA256Digest();
+		digest.update(src.getBytes(), 0, src.getBytes().length);
+		byte[] sha256Bytes = new byte[digest.getDigestSize()];
+		digest.doFinal(sha256Bytes, 0);
+		System.out.println("BC SHA256:" + org.bouncycastle.util.encoders.Hex.toHexString(sha256Bytes));
 	}
 
 	public static void ccSHA1() {
